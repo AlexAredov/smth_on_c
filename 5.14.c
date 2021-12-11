@@ -3,12 +3,14 @@
 
 int main()
 {
-    char *A = "asdfghjkl";
-    char *B = "hjkl";
+    char A[100];
+    char B[100];
+    scanf("%s", A);
+    scanf("%s", B);
     if(strlen(A) > strlen(B)){
-        printf("%s", "Yes");
+        printf("%s", "1 > 2");
     }
     else{
-        printf("%s", "No");
+        printf("%s", "1 < 2");
     }
 }
