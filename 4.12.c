@@ -3,23 +3,27 @@
 
 int main()
 {
+    //Создаем переменные и вводим с клавиатуры
     int **a;
     int i, j, n, m;
     int s = 1;
     int c = 1;
     int d = 1;
-
     scanf("%d", &n);
     scanf("%d", &m);
-    a = (int**)malloc(n * sizeof(int*));
 
+    //Выделение памяти (как в 4.10)
+    a = (int**)malloc(n * sizeof(int*));
     for (i = 0; i<n; i++)
         a[i] = (int*)malloc(m * sizeof(int));
+
+    //Заполнение массива 0 для удобства
     for (i = 0; i<n; i++){
-        for (j = 0; j<m; j++)  // цикл по столбцам
+        for (j = 0; j<m; j++)
             a[i][j] = 0;
     }
 
+    //Заполняем периметр матрицы по часовой стрелке
     for (int y = 0; y < n; y++){
         a[0][y] = s;
         s++;
@@ -37,6 +41,7 @@ int main()
         s++;
     }
 
+    //Заполняем центральные ячейки
     while (s < m * n) {
         while (a[c][d + 1] == 0) {
             a[c][d] = s;
@@ -60,6 +65,7 @@ int main()
         }
     }
 
+    //Заполняем центральнуя ячейку
     for (int x = 0; x < m; x++) {
         for (int y = 0; y < n; y++) {
             if (a[x][y] == 0) {
@@ -68,6 +74,7 @@ int main()
         }
     }
 
+    //Бычный вывод массива
     for (i = 0; i < n; i++){
         for (j = 0; j < m; j++){
             printf("%d\t", a[i][j]);
